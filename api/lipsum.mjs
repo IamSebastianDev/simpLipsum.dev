@@ -92,8 +92,8 @@ const createLoremIpsumText = request => {
 		let words = source.loremIpsum.replace(/\n|\t/gim, '').split(/\ /gim);
 
 		for (let i = 0; i < request.words; i++) {
-			textFormatted += `${words[i]} `;
-			textRaw += `${words[i]} `;
+			textFormatted += `${words[i % (words.length - 1)]} `;
+			textRaw += `${words[i % (words.length - 1)]} `;
 		}
 
 		textFormatted = `<p>${textFormatted}.</p>`.replace(/ \./gim, '.');
@@ -104,15 +104,15 @@ const createLoremIpsumText = request => {
 	if (request.characters) {
 		let character = source.loremIpsum
 			.replace(/\n|\t/gim, '')
-			.replace(' ', '@'); // replace " " with @ to be able to restore white space
+			.replace(/\s/gim, '@'); // replace " " with @ to be able to restore white space
 
 		for (let i = 0; i < request.characters; i++) {
-			textFormatted += character[i];
-			textRaw += character[i];
+			textFormatted += character[i % (character.length - 1)];
+			textRaw += character[i % (character.length - 1)];
 		}
 
-		textFormatted = `<p>${textFormatted}</p>`.replace('@', ' ');
-		textRaw = textRaw.replace('@', ' ');
+		textFormatted = `<p>${textFormatted}</p>`.replace(/@/gim, ' ');
+		textRaw = textRaw.replace(/@/gim, ' ');
 	}
 
 	// return text;
@@ -120,6 +120,7 @@ const createLoremIpsumText = request => {
 };
 
 const lorem = (req, res) => {
+	console.time('operation took: ');
 	// initalize response Object
 	// if no changes happen, this is what will be returned
 	let resObj = {
@@ -164,25 +165,45 @@ const lorem = (req, res) => {
 
 		// check if there are multiple request paramters
 		// and strip all but one.
-		let params = Object.entries(request);
 
-		if (params.length > 1) {
-			request = {};
-			request[params[0][0]] = params[0][1];
+		let requestParams = [];
+		Object.entries(request).map((elem, index) => {
+			if (elem[0] != 'textonly') {
+				if (requestParams.length < 1) {
+					let obj = {};
+					obj[elem[0]] = elem[1];
+					requestParams.push(obj);
+				}
+			}
+		});
+
+		// limit the maximum amount of stuff to generate to 10000
+		if (Object.values(requestParams[0]) > 10000) {
+			resObj.status = {
+				code: 400,
+				text: 'Parameter Value to high. Please dont!',
+				timeStamp: Date.now()
+			};
+		} else {
+			// call the function that will generate the lorem ipsum text
+			let text = createLoremIpsumText(requestParams[0]);
+
+			// populate the resObj request answer
+			resObj.req = request;
+
+			resObj.text = text.textFormatted;
+			resObj.textRaw = text.textRaw;
 		}
-
-		// call the function that will generate the lorem ipsum text
-		let text = createLoremIpsumText(request);
-
-		// populate the resObj request answer
-		resObj.req = request;
-
-		resObj.text = text.textFormatted;
-		resObj.textRaw = text.textRaw;
 	}
 
+	// if text only method is requested, reduce to text
+	if (request.textonly && resObj.text) {
+		res.status(resObj.status.code);
+		resObj = resObj.text;
+	}
+
+	console.timeEnd('operation took: ');
 	// send response
-	res.status(resObj.status.code);
 	res.send(resObj);
 };
 
