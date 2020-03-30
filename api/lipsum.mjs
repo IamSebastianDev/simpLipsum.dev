@@ -49,8 +49,8 @@ const rateLimiter = timestamp => {
 const createLoremIpsumText = request => {
 	// initalize response variable
 
-	let textFormatted = '';
-	let textRaw = '';
+	let textFormatted = ''; // html formatted string
+	let textRaw = ''; // non formatted string
 
 	// check for the requested type.
 	// build return sentence accordingly.
@@ -71,6 +71,7 @@ const createLoremIpsumText = request => {
 		// split text at "." character, remove whitespace
 		let sentences = source.loremIpsum.replace(/\n|\t/gim, '').split('.');
 
+		// itterate and add p tags every 15 sentences to create readble text.
 		for (let i = 0; i < request.sentences; i++) {
 			textFormatted += `${i % 15 === 0 ? '<p>' : ''}${
 				sentences[i % (sentences.length - 1)]
@@ -92,7 +93,7 @@ const createLoremIpsumText = request => {
 
 		for (let i = 0; i < request.words; i++) {
 			textFormatted += `${words[i]} `;
-			textRaw += `${words[i]}`;
+			textRaw += `${words[i]} `;
 		}
 
 		textFormatted = `<p>${textFormatted}.</p>`.replace(/ \./gim, '.');
@@ -103,15 +104,15 @@ const createLoremIpsumText = request => {
 	if (request.characters) {
 		let character = source.loremIpsum
 			.replace(/\n|\t/gim, '')
-			.replace(' ', '@');
+			.replace(' ', '@'); // replace " " with @ to be able to restore white space
 
 		for (let i = 0; i < request.characters; i++) {
 			textFormatted += character[i];
 			textRaw += character[i];
 		}
 
-		textRaw = textRaw.replace('@', ' ');
 		textFormatted = `<p>${textFormatted}</p>`.replace('@', ' ');
+		textRaw = textRaw.replace('@', ' ');
 	}
 
 	// return text;
@@ -125,6 +126,12 @@ const lorem = (req, res) => {
 		status: {
 			code: 400,
 			text: 'no or wrong Parameters',
+			listOfPossibleParameters: [
+				'paragraphs',
+				'sentences',
+				'words',
+				'characters'
+			],
 			timeStamp: Date.now()
 		}
 	};
