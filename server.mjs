@@ -11,7 +11,7 @@ import { lorem } from './generator/lipsum.mjs';
 const PORT = process.env.PORT || 5000;
 
 // set api redirect to envoke lorem function
-app.get('/generator/', (req, res) => lorem(req, res));
+app.get('/generator', (req, res) => lorem(req, res));
 
 // set redirect to public folder
 app.use(express.static('./public/'));
