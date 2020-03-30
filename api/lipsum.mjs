@@ -73,9 +73,12 @@ const createLoremIpsumText = request => {
 
 		// itterate and add p tags every 15 sentences to create readble text.
 		for (let i = 0; i < request.sentences; i++) {
+			// set formatted text
 			textFormatted += `${i % 15 === 0 ? '<p>' : ''}${
 				sentences[i % (sentences.length - 1)]
 			}.${i % 15 === 14 ? '</p>' : ''}`;
+
+			// set raw text
 			textRaw += sentences[i % (sentences.length - 1)];
 		}
 
@@ -120,7 +123,6 @@ const createLoremIpsumText = request => {
 };
 
 const lorem = (req, res) => {
-	console.time('operation took: ');
 	// initalize response Object
 	// if no changes happen, this is what will be returned
 	let resObj = {
@@ -159,41 +161,40 @@ const lorem = (req, res) => {
 		// if one of the parameters is existing, create the parameter object and call the function
 		resObj.status = {
 			code: 200,
-			text: 'ok',
+			text: ['ok'],
 			timeStamp: Date.now()
 		};
 
 		// check if there are multiple request paramters
 		// and strip all but one.
 
-		let requestParams = [];
-		Object.entries(request).map((elem, index) => {
-			if (elem[0] != 'textonly') {
-				if (requestParams.length < 1) {
-					let obj = {};
-					obj[elem[0]] = elem[1];
-					requestParams.push(obj);
-				}
-			}
-		});
+		let parameterList = Object.entries(request);
+		parameterList = parameterList.filter(
+			elem => elem[0].toLowerCase() != 'textonly'
+		);
 
-		// limit the maximum amount of stuff to generate to 10000
-		if (Object.values(requestParams[0]) > 10000) {
-			resObj.status = {
-				code: 400,
-				text: 'Parameter Value to high. Please dont!',
-				timeStamp: Date.now()
-			};
-		} else {
-			// call the function that will generate the lorem ipsum text
-			let text = createLoremIpsumText(requestParams[0]);
+		// shorten the list to only one entry, set warning code, convert back to object
+		parameterList.length = 1;
+		resObj.status.text.push(
+			`More then one parameter found. Respone restricted to ${parameterList[0][0]}`
+		);
 
-			// populate the resObj request answer
-			resObj.req = request;
-
-			resObj.text = text.textFormatted;
-			resObj.textRaw = text.textRaw;
+		// check if value is above 10k
+		if (parameterList[0][1] > 1000) {
+			parameterList[0][1] = 500;
+			resObj.status.text.push(
+				"Please don't request more than 1000 of any kind. "
+			);
 		}
+
+		parameterList = Object.fromEntries(parameterList);
+
+		let text = createLoremIpsumText(parameterList);
+
+		// populate the resObj request answer
+		resObj.req = request;
+		resObj.text = text.textFormatted;
+		resObj.textRaw = text.textRaw;
 	}
 
 	// if text only method is requested, reduce to text
@@ -202,7 +203,6 @@ const lorem = (req, res) => {
 		resObj = resObj.text;
 	}
 
-	console.timeEnd('operation took: ');
 	// send response
 	res.send(resObj);
 };
