@@ -174,10 +174,12 @@ const lorem = (req, res) => {
 		);
 
 		// shorten the list to only one entry, set warning code, convert back to object
-		parameterList.length = 1;
-		resObj.status.text.push(
-			`More then one parameter found. Respone restricted to ${parameterList[0][0]}`
-		);
+		if (parameterList.length > 1) {
+			parameterList.length = 1;
+			resObj.status.text.push(
+				`More then one parameter found. Respone restricted to ${parameterList[0][0]}`
+			);
+		}
 
 		// check if value is above 10k
 		if (parameterList[0][1] > 1000) {
