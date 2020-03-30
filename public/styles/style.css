@@ -27,4 +27,6 @@ html {
 
 	font-family: 'Merriweather', 'Roboto', sans-serif;
 	color: var(--colorLight);
+
+	background: var(--colorMain);
 }
