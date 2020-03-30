@@ -1,11 +1,7 @@
 /** @format */
 
-// import express and & init
-import express from 'express';
-const app = express();
-
 // import source
-import source from './lorem.source.mjs';
+const source = require('./lorem.source.js');
 
 // implenting a simple rate limiting of one request per second
 // on server start, a last request variable is initalized
@@ -209,4 +205,4 @@ const lorem = (req, res) => {
 	res.send(resObj);
 };
 
-export { lorem };
+module.exports = lorem;

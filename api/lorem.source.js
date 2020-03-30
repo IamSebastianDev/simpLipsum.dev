@@ -1,6 +1,6 @@
 /** @format */
 
-export default {
+module.exports = {
 	loremIpsum: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur erat ullamcorper magna sodales, eget tempor justo imperdiet. In suscipit sollicitudin mi, sit amet tincidunt elit sodales eu. Fusce eu tincidunt sapien. Duis aliquam libero mattis, viverra velit vel, vulputate nulla. In ipsum ante, maximus nec posuere in, mollis in orci. In rutrum lectus enim, vel vestibulum massa malesuada et. Aliquam ac tortor est. Ut at mollis erat. Pellentesque ac neque nulla. Nunc elit erat, porta eu eros sit amet, fermentum volutpat ex. Sed feugiat ac ante sed sagittis. Ut vestibulum, mauris ut suscipit efficitur, felis risus fermentum sem, vel volutpat nisl ante et nulla. Nam dapibus mi dignissim velit varius, consequat ultrices arcu dictum.
 	
 	Praesent congue cursus massa, at maximus purus euismod in. Pellentesque faucibus mauris dignissim turpis hendrerit, id interdum lectus euismod. Donec sit amet bibendum felis, ac lobortis dui. Morbi varius euismod quam, at bibendum felis feugiat eu. Nullam sed est quis nunc viverra laoreet vitae eget leo. Aenean iaculis, odio non tempus aliquam, enim felis hendrerit lacus, nec laoreet neque lectus facilisis nibh. Morbi pharetra enim eget velit placerat, non hendrerit tellus posuere. Aenean eget tempor odio. Curabitur suscipit in nisl eget interdum. Nulla facilisi. Donec id sagittis ex. Aliquam maximus tincidunt tincidunt. Duis eu ante tortor.

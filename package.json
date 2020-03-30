@@ -4,8 +4,8 @@
 	"description": "A simple lorem ipsum generator",
 	"main": "server.mjs",
 	"scripts": {
-		"start": "node -r esm server.mjs",
-		"dev": "nodemon -r esm server.mjs"
+		"start": "node server.js",
+		"dev": "nodemon server.js"
 	},
 	"author": "Sebastian Heinz",
 	"license": "MIT",
