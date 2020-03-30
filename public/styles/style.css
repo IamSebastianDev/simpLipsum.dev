@@ -1,0 +1,30 @@
+/** @format */
+
+/* fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500&display=swap');
+
+/** 
+    colors
+*/
+
+:root {
+	--colorMain: hsla(209, 35%, 35%, 1);
+
+	--colorLight: hsla(209, 100%, 100%, 1);
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+
+	box-sizing: border-box;
+
+	/* resetting body font size to 10px for easy em / rem conversion */
+	font-size: 10px;
+
+	font-family: 'Merriweather', 'Roboto', sans-serif;
+	color: var(--colorLight);
+}
