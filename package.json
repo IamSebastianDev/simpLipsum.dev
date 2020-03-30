@@ -1,0 +1,19 @@
+{
+	"name": "simplipsum.dev",
+	"version": "1.0.0",
+	"description": "A simple lorem ipsum generator",
+	"main": "server.mjs",
+	"scripts": {
+		"start": "node -r esm server.mjs",
+		"dev": "nodemon -r esm server.mjs"
+	},
+	"author": "Sebastian Heinz",
+	"license": "MIT",
+	"dependencies": {
+		"esm": "^3.2.25",
+		"express": "^4.17.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.2"
+	}
+}
