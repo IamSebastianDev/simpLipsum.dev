@@ -185,6 +185,7 @@ html {
 */
 
 .generator-Container {
+	position: relative;
 	padding: 20px;
 	margin: 100px auto 230px;
 
@@ -280,6 +281,45 @@ html {
 	display: block;
 	padding: 10px 20px;
 	min-width: 200px;
+}
+
+.generator-Overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	background: hsla(210, 100%, 100%, 0.8);
+
+	border-radius: 5px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loader-Circle {
+	width: 50px;
+	height: 50px;
+
+	border: 6px solid var(--colorBackground);
+	border-radius: 50%;
+
+	border-bottom-color: transparent;
+	border-top-color: var(--colorMain);
+	border-right-color: hsla(10, 50%, 55%, 1);
+
+	animation: loader 1s ease-out infinite;
+}
+
+@keyframes loader {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 /*

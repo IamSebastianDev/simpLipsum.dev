@@ -14,6 +14,10 @@ let output = document.querySelector('.generator-Output');
 const generate = event => {
 	// check if the generate button was clicked
 	if (event.target.closest('.generator-GenerateButton')) {
+		// invoke loader
+		let loader = document.querySelector('.generator-Overlay');
+		loader.style.display = 'flex';
+
 		// get values to construct fetch data
 		let amount = document.querySelector(
 			".generator-Controls input[type='number']"
@@ -24,7 +28,10 @@ const generate = event => {
 		// fetch data and append to output
 		fetch(`https://simplipsum.now.sh/api?${type}=${amount}`)
 			.then(res => res.json())
-			.then(data => (output.innerHTML = data.text))
+			.then(data => {
+				output.innerHTML = data.text;
+				loader.style.display = 'none';
+			})
 			.catch(err => console.log(err));
 	}
 };
