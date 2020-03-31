@@ -22,15 +22,7 @@ const generate = event => {
 		let type = document.querySelector('.generator-Controls select').value;
 
 		// fetch data and append to output
-		fetch(`https://simplipsum.now.sh/api?words=20`, {
-			method: 'GET', // *GET, POST, PUT, DELETE, etc.
-			mode: 'cors',
-			// no-cors, *cors, same-origin
-			headers: {
-				'Content-Type': 'application/json'
-				// 'Content-Type': 'application/x-www-form-urlencoded',
-			}
-		})
+		fetch(`https://simplipsum.now.sh/api?words=20`)
 			.then(res => res.json())
 			.then(data => (output.innerHTML = data.text))
 			.catch(err => console.log(err));
