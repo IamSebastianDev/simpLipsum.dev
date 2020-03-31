@@ -32,7 +32,7 @@ const generate = event => {
 			}
 		})
 			.then(res => res.json())
-			.then(data => (output.textContent = data.text))
+			.then(data => (output.innerHTML = data.text))
 			.catch(err => console.log(err));
 	}
 };
