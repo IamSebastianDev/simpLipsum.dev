@@ -202,7 +202,7 @@ const lorem = (req, res) => {
 	}
 
 	// send response
-	res.send(resObj);
+	res.json(resObj);
 };
 
 module.exports = lorem;

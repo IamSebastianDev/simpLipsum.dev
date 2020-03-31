@@ -10,5 +10,74 @@
 
 		<script src="https://flatshadow.now.sh/dist/flatShadow.min.js"></script>
 	</head>
-	<body></body>
+	<body>
+		<div class="wrapper">
+			<nav class="nav-Bar" role="navigation">
+				<ul>
+					<li role="menuitem">
+						<a data-active="true" href="/generator.html"
+							>Generator</a
+						>
+					</li>
+					<li><span>&bull;</span></li>
+					<li role="menuitem"><a href="/api.html">API</a></li>
+					<li><span>&bull;</span></li>
+					<li role="menuitem"><a href="/about.html">About</a></li>
+					<li role="menuitem">
+						<button class="nav-MenuCloseBttn">
+							<img src="./assets/x.svg" />
+						</button>
+					</li>
+					<li role="menuitem">
+						<button class="nav-MenuOpenBttn">
+							<img src="./assets/menu.svg" />
+						</button>
+					</li>
+				</ul>
+			</nav>
+			<header class="header">
+				<h1>simp<i>L</i>ipsum</h1>
+				<p>
+					<i>Lorem ipsum</i> has been the go to placeholder text for
+					the print & publishing industry ever since the 1500s.
+				</p>
+			</header>
+			<main>
+				<div
+					class="generator-Container flatShadow"
+					flatshadow-color="hsla(210, 20%, 20%, 1)"
+				>
+					<textarea class="generator-Output" readonly></textarea>
+					<div class="generator-Controls">
+						<label for="amount">Amount:</label>
+						<input
+							type="number"
+							name="amount"
+							min="0"
+							max="100"
+							value="2"
+						/>
+						<label for="type">Type:</label>
+						<select name="type">
+							<option value="paragraphs">Paragraphs</option>
+							<option value="sentences">Sentences</option>
+							<option value="words">Words</option>
+							<option value="characters">Characters</option>
+						</select>
+						<button class="generator-GenerateButton">
+							Generate <img src="assets/settings.svg" />
+						</button>
+						<button class="generator-CopyButton">
+							Copy <img src="assets/copy.svg" />
+						</button>
+					</div>
+				</div>
+			</main>
+		</div>
+		<div class="body-BackgroundText">Generator</div>
+		<footer>
+			<span>&copy; 2020, <a href="">Sebastian Heinz</a></span>
+		</footer>
+	</body>
 </html>
+<script src="scripts/app.js" type="module"></script>
