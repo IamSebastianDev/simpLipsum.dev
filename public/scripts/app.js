@@ -31,23 +31,11 @@ const generate = event => {
 				// 'Content-Type': 'application/x-www-form-urlencoded',
 			}
 		})
-			.then(res => console.log(res))
-			.then(data => console.log(data))
+			.then(res => res.json())
+			.then(data => (output.value = data.text))
 			.catch(err => console.log(err));
 	}
 };
 
 // add event listener
 window.addEventListener('click', generate);
-
-let data = fetch(`https://simplipsum.now.sh/api?words=20`, {
-	method: 'GET', // *GET, POST, PUT, DELETE, etc.
-	mode: 'no-cors', // no-cors, *cors, same-origin
-	headers: {
-		'Content-Type': 'application/json'
-		// 'Content-Type': 'application/x-www-form-urlencoded',
-	}
-})
-	.then(res => res.json())
-	.then(data => console.log(data))
-	.catch(err => console.log(err));
