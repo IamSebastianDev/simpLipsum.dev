@@ -1,0 +1,129 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>simplipsum || easy Lorem Ipsum!</title>
+		<link rel="stylesheet" href="./styles/style.css" />
+
+		<script src="https://flatshadow.now.sh/dist/flatShadow.min.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+            <nav class="nav-Bar" role="navigation">
+				<ul>
+					<li role="menuitem">
+						<a href="/index.html">Generator</a>
+					</li>
+					<li><span>&bull;</span></li>
+					<li role="menuitem"><a data-active="true" href="/api.html">API</a></li>
+					<li><span>&bull;</span></li>
+					<li role="menuitem"><a   href="/about.html">About</a></li>
+					<li role="menuitem">
+						<button class="nav-MenuCloseBttn">
+							<img src="./assets/x.svg" />
+						</button>
+					</li>
+				</ul>
+				<button class="nav-MenuOpenBttn">
+					<img src="./assets/menu.svg" />
+				</button>
+			</nav>
+                <section class="body-Code">
+					<h1>simp<i>L</i>ipsum...</h1>
+					<p>...exposes a free restfull API to the web. You can use it to generate lorem ipsum text on demand. To use the api, simply make a GET request to the simpLipsum /api endpoint.</p>
+					<div class="body-CodeWrapper">
+						<h3> //Using fetch() to make the request:</h3>
+						<span><span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api</span>)
+						<br>&nbsp;&nbsp;.<span style="color: orangered;">then</span>(<span style="color: steelblue">response</span> => <span style="color: steelblue">response</span>.<span style="color: orangered;">json()</span>)
+						<br>&nbsp;&nbsp;.<span style="color: orangered;">then</span>(<span style="color: steelblue">data</span> => <span style="color: steelblue">console</span>.<span style="color: orangered;">log</span>(<span style="color: steelblue">data</span>))
+						<br>&nbsp;&nbsp;.<span style="color: orangered;">catch</span>(<span style="color: steelblue">err</span> => <span style="color: steelblue">console</span>.<span style="color: orangered;">log</span>(<span style="color: steelblue">err</span>))</span>
+
+						<h3> //This request will return an error 400, <br>//because no query parameters were supplied.</h3>
+					</div>
+					<p>To receive an usable response, you need to add a query parameter to the fetch like this: </p>
+					<div class="body-CodeWrapper">
+						<h3> //Adding a query parameter</h3>
+						<span><span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?paragraphs=2</span>)
+						<br>&nbsp;&nbsp;.<span style="color: orangered;">then</span>(<span style="color: steelblue">response</span> => <span style="color: steelblue">response</span>.<span style="color: orangered;">json()</span>)
+						<br>&nbsp;&nbsp;.<span style="color: orangered;">then</span>(<span style="color: steelblue">data</span> => <span style="color: steelblue">console</span>.<span style="color: orangered;">log</span>(<span style="color: steelblue">data</span>))
+						<br>&nbsp;&nbsp;.<span style="color: orangered;">catch</span>(<span style="color: steelblue">err</span> => <span style="color: steelblue">console</span>.<span style="color: orangered;">log</span>(<span style="color: steelblue">err</span>))</span>
+
+						<h3> //This fetch request will return an JSON object <br>
+							//with 2 Paragraphs inside the "text" key.</h3>
+					</div>
+					<p>Every response Object will have the same structure:</p>
+					<div class="body-CodeWrapper">
+						<h3> //The response object</h3>
+						<span>
+						{<br>
+							&nbsp;&nbsp;status: {<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;code: <span style="color: steelblue">200</span>,<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;text: ["<span style="color: seagreen">Ok</span>"],<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;timeStamp: <span style="color: steelblue">1585663775104</span><br>
+								&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+								&nbsp;&nbsp;req: {<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;paragraphs: "<span style="color: seagreen">2</span>"<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+								&nbsp;&nbsp;text: "<span style="color: seagreen">This contains the HTML encoded lorem ipsum text</span>",<br>
+								&nbsp;&nbsp;textRaw: "<span style="color: seagreen">This contains the raw lorem ipsum text</span>",<br>
+						}
+						</span>
+						<h3>//Code 200 is returend when the request was succesfull.<br>
+						//Code 400 is returned when not enough parameters are supplied.<br>
+					//Code 429 is returned when too many request come in at the same time.</h3>
+					</div>
+					<p>There are 5 available query Parameters for you to use.</p>
+					<div class="body-CodeWrapper">
+						<span>
+							<h3>//Returns the requested amount in full paragraphs.</h3>
+							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?paragraphs=[<span style="color: steelblue">number</span>]</span>)
+						</span>
+					</div>
+					<div class="body-CodeWrapper">
+						<span>
+							<h3>//Returns the requested amount in full sentences.</h3>
+							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?sentences=[<span style="color: steelblue">number</span>]</span>)
+						</span>
+					</div>
+					<div class="body-CodeWrapper">
+						<span>
+							<h3>//Returns the requested amount of words.</h3>
+							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?words=[<span style="color: steelblue">number</span>]</span>)
+						</span>
+					</div>
+					<div class="body-CodeWrapper">
+						<span>
+							<h3>//Returns the requested amount of characters.</h3>
+							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?characters=[<span style="color: steelblue">number</span>]</span>)
+						</span>
+					</div>
+					<div class="body-CodeWrapper">
+						<span>
+							<h3>//If true, only the HTML formatted text is returned <br>//without the rest of the response object.</h3>
+							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?textOnly=[<span style="color: purple">true / false</span>]</span>)
+						</span>
+					</div>
+					<p>While you can add multiple query paramters to the query string, only the first of the four different types will have an effect. The rest will be filtered out.</p>
+                </section>
+				<div class="body-BackgroundText">api</div>
+			</main>
+		</div>
+
+		<footer class="footer">
+			<span
+				>&copy; 2020,
+				<a href="https://iamsebastian.dev" target="_blank"
+					>Sebastian Heinz</a
+				></span
+			>
+			<div class="footer-Social">
+				<a href="https://github.com/monsterteddy"><img src="./assets/github.svg"></a>
+				<a href="https://codepen.io/monsterTeddy"><img src="./assets/codepen.svg"></a>
+			</div>
+		</footer>
+	</body>
+</html>
+<script src="scripts/app.js" type="module"></script>
