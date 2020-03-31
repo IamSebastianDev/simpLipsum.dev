@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static('./public/'));
 
 // invoke api on request
-app.get('/api', cors({ origin: false }), (req, res) => lorem(req, res));
+app.get('/api', cors({ origin: '*' }), (req, res) => lorem(req, res));
 
 // start server
 app.listen(PORT, () => console.log(`Server running on Port ${PORT}`));

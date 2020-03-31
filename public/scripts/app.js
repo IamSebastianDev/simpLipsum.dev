@@ -24,7 +24,7 @@ const generate = event => {
 		// fetch data and append to output
 		fetch(`https://simplipsum.now.sh/api?words=20`, {
 			method: 'GET', // *GET, POST, PUT, DELETE, etc.
-			mode: 'no-cors',
+			mode: 'cors',
 			// no-cors, *cors, same-origin
 			headers: {
 				'Content-Type': 'application/json'
