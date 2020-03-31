@@ -2,6 +2,7 @@
 
 // import & setup express
 import express from 'express';
+import cors from 'cors';
 const app = express();
 
 // import lorem
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static('./public/'));
 
 // invoke api on request
-app.get('/api', (req, res) => lorem(req, res));
+app.get('/api', cors(), (req, res) => lorem(req, res));
 
 // start server
 app.listen(PORT, () => console.log(`Server running on Port ${PORT}`));

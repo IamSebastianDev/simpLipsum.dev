@@ -22,11 +22,16 @@ const generate = event => {
 		let type = document.querySelector('.generator-Controls select').value;
 
 		// fetch data and append to output
-		fetch(`https://simplipsum.now.sh/api?${type}=${amout}`, {
+		fetch(`https://simplipsum.now.sh/api?words=20`, {
 			method: 'GET', // *GET, POST, PUT, DELETE, etc.
-			mode: 'no-cors' // no-cors, *cors, same-origin
+			mode: 'no-cors',
+			// no-cors, *cors, same-origin
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			}
 		})
-			.then(res => res.json())
+			.then(res => console.log(res))
 			.then(data => console.log(data))
 			.catch(err => console.log(err));
 	}
@@ -34,3 +39,15 @@ const generate = event => {
 
 // add event listener
 window.addEventListener('click', generate);
+
+let data = fetch(`https://simplipsum.now.sh/api?words=20`, {
+	method: 'GET', // *GET, POST, PUT, DELETE, etc.
+	mode: 'no-cors', // no-cors, *cors, same-origin
+	headers: {
+		'Content-Type': 'application/json'
+		// 'Content-Type': 'application/x-www-form-urlencoded',
+	}
+})
+	.then(res => res.json())
+	.then(data => console.log(data))
+	.catch(err => console.log(err));
