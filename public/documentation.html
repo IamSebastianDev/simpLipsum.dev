@@ -36,7 +36,7 @@
 					<p>...exposes a free restfull API to the web. You can use it to generate lorem ipsum text on demand. To use the api, simply make a GET request to the simpLipsum /api endpoint.</p>
 					<div class="body-CodeWrapper">
 						<h3> //Using fetch() to make the request:</h3>
-						<span><span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api</span>)
+						<span><span style="color: orangered">fetch</span>('<span style="color: seagreen">https://simplipsum.now.sh/api</span>')
 						<br>&nbsp;&nbsp;.<span style="color: orangered;">then</span>(<span style="color: steelblue">response</span> => <span style="color: steelblue">response</span>.<span style="color: orangered;">json()</span>)
 						<br>&nbsp;&nbsp;.<span style="color: orangered;">then</span>(<span style="color: steelblue">data</span> => <span style="color: steelblue">console</span>.<span style="color: orangered;">log</span>(<span style="color: steelblue">data</span>))
 						<br>&nbsp;&nbsp;.<span style="color: orangered;">catch</span>(<span style="color: steelblue">err</span> => <span style="color: steelblue">console</span>.<span style="color: orangered;">log</span>(<span style="color: steelblue">err</span>))</span>
@@ -46,7 +46,7 @@
 					<p>To receive an usable response, you need to add a query parameter to the fetch like this: </p>
 					<div class="body-CodeWrapper">
 						<h3> //Adding a query parameter</h3>
-						<span><span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?paragraphs=2</span>)
+						<span><span style="color: orangered">fetch</span>('<span style="color: seagreen">https://simplipsum.now.sh/api?paragraphs=2</span>')
 						<br>&nbsp;&nbsp;.<span style="color: orangered;">then</span>(<span style="color: steelblue">response</span> => <span style="color: steelblue">response</span>.<span style="color: orangered;">json()</span>)
 						<br>&nbsp;&nbsp;.<span style="color: orangered;">then</span>(<span style="color: steelblue">data</span> => <span style="color: steelblue">console</span>.<span style="color: orangered;">log</span>(<span style="color: steelblue">data</span>))
 						<br>&nbsp;&nbsp;.<span style="color: orangered;">catch</span>(<span style="color: steelblue">err</span> => <span style="color: steelblue">console</span>.<span style="color: orangered;">log</span>(<span style="color: steelblue">err</span>))</span>
@@ -79,31 +79,31 @@
 					<div class="body-CodeWrapper">
 						<span>
 							<h3>//Returns the requested amount in full paragraphs.</h3>
-							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?paragraphs=[<span style="color: steelblue">number</span>]</span>)
+							<span style="color: orangered">fetch</span>('<span style="color: seagreen">https://simplipsum.now.sh/api?paragraphs=[<span style="color: steelblue">number</span>]'</span>)
 						</span>
 					</div>
 					<div class="body-CodeWrapper">
 						<span>
 							<h3>//Returns the requested amount in full sentences.</h3>
-							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?sentences=[<span style="color: steelblue">number</span>]</span>)
+							<span style="color: orangered">fetch</span>('<span style="color: seagreen">https://simplipsum.now.sh/api?sentences=[<span style="color: steelblue">number</span>]</span>')
 						</span>
 					</div>
 					<div class="body-CodeWrapper">
 						<span>
 							<h3>//Returns the requested amount of words.</h3>
-							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?words=[<span style="color: steelblue">number</span>]</span>)
+							<span style="color: orangered">fetch</span>('<span style="color: seagreen">https://simplipsum.now.sh/api?words=[<span style="color: steelblue">number</span>]</span>')
 						</span>
 					</div>
 					<div class="body-CodeWrapper">
 						<span>
 							<h3>//Returns the requested amount of characters.</h3>
-							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?characters=[<span style="color: steelblue">number</span>]</span>)
+							<span style="color: orangered">fetch</span>('<span style="color: seagreen">https://simplipsum.now.sh/api?characters=[<span style="color: steelblue">number</span>]</span>')
 						</span>
 					</div>
 					<div class="body-CodeWrapper">
 						<span>
 							<h3>//If true, only the HTML formatted text is returned <br>//without the rest of the response object.</h3>
-							<span style="color: orangered">fetch</span>(<span style="color: seagreen">https://simplipsum.now.sh/api?textOnly=[<span style="color: purple">true / false</span>]</span>)
+							<span style="color: orangered">fetch</span>('<span style="color: seagreen">https://simplipsum.now.sh/api?textOnly=[<span style="color: purple">true / false</span>]</span>')
 						</span>
 					</div>
 					<p>While you can add multiple query paramters to the query string, only the first of the four different types will have an effect. The rest will be filtered out.</p>
