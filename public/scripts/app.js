@@ -11,7 +11,7 @@
 
 let output = document.querySelector('.generator-Output');
 
-const generate = event => {
+const generate = (event) => {
 	// check if the generate button was clicked
 	if (event.target.closest('.generator-GenerateButton')) {
 		// invoke loader
@@ -27,12 +27,12 @@ const generate = event => {
 
 		// fetch data and append to output
 		fetch(`https://simplipsum.now.sh/api?${type}=${amount}`)
-			.then(res => res.json())
-			.then(data => {
+			.then((res) => res.json())
+			.then((data) => {
 				output.innerHTML = data.text;
 				loader.style.display = 'none';
 			})
-			.catch(err => console.log(err));
+			.catch((err) => console.log(err));
 	}
 };
 
@@ -52,9 +52,9 @@ const copy = () => {
 			let data = [
 				new ClipboardItem({
 					'text/plain': new Blob([src], {
-						type: 'text/plain'
-					})
-				})
+						type: 'text/plain',
+					}),
+				}),
 			];
 
 			navigator.clipboard.write(data);
@@ -88,7 +88,7 @@ window.addEventListener('click', copy);
 
 let menu = document.querySelector('.nav-Bar ul');
 
-window.addEventListener('click', event => {
+window.addEventListener('click', (event) => {
 	if (event.target.closest('.nav-MenuOpenBttn')) {
 		menu.style.transform = 'translateY(0px)';
 		document.querySelector('html').style.overflowY = 'hidden';

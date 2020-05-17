@@ -48,7 +48,7 @@
 					flatshadow-stepsize="4"
 					flatshadow-length="800"
 				>
-					<div class="generator-Overlay" style="display: none">
+					<div class="generator-Overlay" style="display: none;">
 						<span class="loader-Circle"></span>
 					</div>
 					<div class="generator-Output" readonly>
@@ -81,12 +81,24 @@
 							value="2"
 						/>
 						<label for="type">Type:</label>
-						<select name="type">
-							<option value="paragraphs">Paragraphs</option>
-							<option value="sentences">Sentences</option>
-							<option value="words">Words</option>
-							<option value="characters">Characters</option>
-						</select>
+						<div style="position: relative; margin: 5px;">
+							<select name="type">
+								<option value="paragraphs">Paragraphs</option>
+								<option value="sentences">Sentences</option>
+								<option value="words">Words</option>
+								<option value="characters">Characters</option>
+							</select>
+							<img
+								style="
+									position: absolute;
+									right: 25px;
+									top: 50%;
+									margin-top: -9px;
+									height: 18px;
+								"
+								src="assets/chevron-down.svg"
+							/>
+						</div>
 						<button class="generator-GenerateButton">
 							Generate <img src="assets/settings.svg" />
 						</button>

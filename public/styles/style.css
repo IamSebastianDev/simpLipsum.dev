@@ -235,7 +235,8 @@ html {
 .generator-Controls button,
 .generator-Controls select,
 .generator-Controls input {
-	padding: 10px 10px;
+	padding: 10px 25px;
+
 	margin: 5px 5px;
 
 	background: var(--colorLight);
@@ -253,12 +254,17 @@ html {
 	text-transform: uppercase;
 
 	transition: 0.25s ease;
-}
-
-.generator-Controls button {
-	padding: 10px 25px;
 
 	cursor: pointer;
+}
+
+.generator-Controls select {
+	-webkit-appearance: none;
+	appearance: none;
+	border-color: var(--colorDark);
+	cursor: pointer;
+	margin: unset;
+	width: 100%;
 }
 
 .generator-Controls button img {
@@ -279,7 +285,6 @@ html {
 
 .generator-Controls select {
 	display: block;
-	padding: 10px 20px;
 	min-width: 200px;
 }
 
